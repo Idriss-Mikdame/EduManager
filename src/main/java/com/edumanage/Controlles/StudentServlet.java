@@ -40,19 +40,5 @@ public class StudentServlet extends HttpServlet {
     }
 
 }
-@WebServlet("/read")
-public class Read extends HttpServlet {
-    private StudentDAO studentDAO;
 
-    @Override
-    public void init() {
-        studentDAO = new StudentDAO();
-    }
 
-    @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        List<Student> Listp = Student.getAllstudent();
-        request.setAttribute("ListP", Listp);
-        request.getRequestDispatcher("/WEB-INF/ListP.jsp").forward(request, response);
-    }
-}
