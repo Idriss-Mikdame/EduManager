@@ -27,13 +27,13 @@ public class StudentServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        int id = Integer.parseInt(request.getParameter("id"));
+     //  int id = Integer.parseInt(request.getParameter("id"));
         String nom = request.getParameter("nom");
         String prenom = request.getParameter("prenom");
         String email = request.getParameter("email");
         String Datenaiss = request.getParameter("Datenaiss");
 
-        Student student = new Student(id, nom, prenom, email, Datenaiss);
+        Student student = new Student(nom, prenom, email, Datenaiss);
         studentDAO.createStudent(student); // Utiliser l'instance au lieu de la classe
 
         response.sendRedirect(request.getContextPath() + "/read");

@@ -11,12 +11,15 @@
   <component name="ChangeListManager">
     <list default="true" id="8d2db76e-ffc5-4162-bd5a-2b6e810e647a" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/edumanage/Controlles/CoursServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/edumanage/Controlles/CoursServlet.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/edumanage/Controlles/StudentServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/edumanage/Controlles/StudentServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/edumanage/dao/StudentDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/edumanage/dao/StudentDAO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/edumanage/dao/coursDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/edumanage/dao/coursDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/edumanage/model/Cours.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/edumanage/model/Cours.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/edumanage/model/Student.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/edumanage/model/Student.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/Cours/AfficherCours.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/Cours/AfficherCours.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/Cours/AjouterCours.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/Cours/AjouterCours.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/Student/AfficherStudent.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/Student/AfficherStudent.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -183,7 +186,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1739896332897</updated>
-      <workItem from="1739896333873" duration="18154000" />
+      <workItem from="1739896333873" duration="25155000" />
     </task>
     <servers />
   </component>

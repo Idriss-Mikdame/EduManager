@@ -24,11 +24,11 @@ public class StudentDAO {
                         "nom VARCHAR(100) NOT NULL, " +
                         "prenom VARCHAR(100) NOT NULL, " +
                         "email VARCHAR(255) NOT NULL, " +
-                        "Datnaisse VARCHAR(100) NOT NULL, " +
+                        "Datnaisse VARCHAR(100) NOT NULL" +
                         ");";
 
                 statement.executeUpdate(createTableSQL);
-                System.out.println("Table 'person' created successfully");
+                System.out.println("Table 'student' created successfully");
             }
 
         } catch (ClassNotFoundException e) {
@@ -39,13 +39,38 @@ public class StudentDAO {
             e.printStackTrace();
         }
     }
-    public static void createStudent(Student student) {
-        if (student.getId() == 0) {
-            System.err.println("Database connection is not initialized!");
+
+    public void createStudent(Student student) {
+        if (connection == null) {
+            System.err.println("Database connection not established!");
             return;
         }
 
+        String query = "INSERT INTO student (nom, prenom, email, Datnaisse) VALUES (?, ?, ?, ?)";
+        try (PreparedStatement stmt = connection.prepareStatement(query)) {
+            stmt.setString(1, student.getNom());
+            stmt.setString(2, student.getPrenom());
+            stmt.setString(3, student.getEmail());
+            stmt.setString(4, student.getDatenaiss());
+            stmt.executeUpdate();
+            System.out.println("Student inserted successfully");
+        } catch (SQLException e) {
+            System.err.println("Error inserting student: " + e.getMessage());
+            e.printStackTrace();
+        }
     }
 
-}
+    public void closeConnection() {
+        if (connection != null) {
+            try {
+                connection.close();
+                System.out.println("Database connection closed successfully");
+            } catch (SQLException e) {
+                System.err.println("Error closing database connection: " + e.getMessage());
+                e.printStackTrace();
+            }
+        }
+    }
 
+
+}

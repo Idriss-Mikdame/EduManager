@@ -17,7 +17,12 @@ public class Student {
         Datenaiss = datenaiss;
     }
 
-
+    public Student(String nom, String email, String prenom, String datenaiss) {
+        this.nom = nom;
+        this.email = email;
+        this.prenom = prenom;
+        Datenaiss = datenaiss;
+    }
 
     public int getId() {
         return id;
