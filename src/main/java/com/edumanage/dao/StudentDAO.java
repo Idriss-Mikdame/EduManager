@@ -3,6 +3,7 @@ package com.edumanage.dao;
 import com.edumanage.model.Student;
 
 import java.sql.*;
+import java.util.List;
 
 public class StudentDAO {
 
@@ -73,4 +74,15 @@ public class StudentDAO {
     }
 
 
+    public List<Student> getAllStudents() {
+    }
+
+    public void deleteStudent(int id) {
+    }
+
+    public Student getStudent(int id) {
+    }
+
+    public void updateStudent(Student student) {
+    }
 }

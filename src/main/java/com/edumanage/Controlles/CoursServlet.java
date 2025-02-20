@@ -42,10 +42,10 @@ public class CoursServlet extends HttpServlet {
         String nomducours = request.getParameter("NomCours");
         String description = request.getParameter("Description");
 
-        // Utilisation d'un constructeur qui prend en compte l'id (même si pour l'insertion, ce champ peut être ignoré)
         Cours cour = new Cours(id, nomducours, description);
         courDAO.createCours(cour); // Utilisation de l'instance DAO initialisée dans init()
 
         response.sendRedirect(request.getContextPath() + "/read");
     }
+
 }
