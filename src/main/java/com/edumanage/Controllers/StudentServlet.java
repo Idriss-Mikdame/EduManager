@@ -100,7 +100,7 @@ public class StudentServlet extends HttpServlet {
             throws ServletException, IOException {
         int id = Integer.parseInt(request.getParameter("id"));
         Student existingStudent = studentDAO.selectStudentById(id);
-        RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/Student/ModifierStudent.jsp");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/Student/ModiffierStudent.jsp");
         request.setAttribute("student", existingStudent);
         dispatcher.forward(request, response);
     }
