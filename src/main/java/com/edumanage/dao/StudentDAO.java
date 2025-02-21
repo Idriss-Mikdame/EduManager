@@ -3,6 +3,7 @@ package com.edumanage.dao;
 import com.edumanage.model.Student;
 
 import java.sql.*;
+import java.util.ArrayList;
 import java.util.List;
 
 public class StudentDAO {
@@ -25,9 +26,8 @@ public class StudentDAO {
                         "nom VARCHAR(100) NOT NULL, " +
                         "prenom VARCHAR(100) NOT NULL, " +
                         "email VARCHAR(255) NOT NULL, " +
-                        "Datnaisse VARCHAR(100) NOT NULL" +
+                        "datenaissance VARCHAR(100) NOT NULL" + // Fixed typo
                         ");";
-
                 statement.executeUpdate(createTableSQL);
                 System.out.println("Table 'student' created successfully");
             }
@@ -41,18 +41,18 @@ public class StudentDAO {
         }
     }
 
-    public void createStudent(Student student) {
+    public void insertEtudiant(Student student) {
         if (connection == null) {
             System.err.println("Database connection not established!");
             return;
         }
 
-        String query = "INSERT INTO student (nom, prenom, email, Datnaisse) VALUES (?, ?, ?, ?)";
+        String query = "INSERT INTO student (nom, prenom, email, datenaissance) VALUES (?, ?, ?, ?)"; // Fixed column name
         try (PreparedStatement stmt = connection.prepareStatement(query)) {
             stmt.setString(1, student.getNom());
             stmt.setString(2, student.getPrenom());
             stmt.setString(3, student.getEmail());
-            stmt.setString(4, student.getDatenaiss());
+            stmt.setString(4, student.getDatenaiss()); // Ensure getDatenaiss() exists in Student class
             stmt.executeUpdate();
             System.out.println("Student inserted successfully");
         } catch (SQLException e) {
@@ -61,28 +61,27 @@ public class StudentDAO {
         }
     }
 
-    public void closeConnection() {
-        if (connection != null) {
-            try {
-                connection.close();
-                System.out.println("Database connection closed successfully");
-            } catch (SQLException e) {
-                System.err.println("Error closing database connection: " + e.getMessage());
-                e.printStackTrace();
+
+    public List<Student> selectAllEtudiant() {
+        List<Student> etudiantList = new ArrayList<>();
+        String query = "SELECT id, nom, prenom, email, datenaissance FROM student"; // Fixed column names
+
+        try (PreparedStatement preparedStatement = connection.prepareStatement(query);
+             ResultSet rs = preparedStatement.executeQuery()) {
+
+            while (rs.next()) {
+                int id = rs.getInt("id");
+                String nom = rs.getString("nom");
+                String prenom = rs.getString("prenom");
+                String email = rs.getString("email");
+                String datenaissance = rs.getString("datenaissance");
+
+                etudiantList.add(new Student(id, nom, prenom, email, datenaissance));
             }
+        } catch (SQLException e) {
+            System.err.println("Error fetching students: " + e.getMessage());
+            e.printStackTrace();
         }
-    }
-
-
-    public List<Student> getAllStudents() {
-    }
-
-    public void deleteStudent(int id) {
-    }
-
-    public Student getStudent(int id) {
-    }
-
-    public void updateStudent(Student student) {
+        return etudiantList;
     }
 }

@@ -1,10 +1,10 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Employee List</title>
-    <!-- Add Bootstrap CSS -->
+    <title>Liste des Étudiants</title>
+    <!-- Ajout de Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <!-- Custom CSS -->
+    <!-- CSS personnalisé -->
     <style>
         body {
             background-color: #f0f2f5;
@@ -42,32 +42,26 @@
 </head>
 <body>
 <div class="container mt-5">
-    <h1>Listes des EmployÃ©es</h1>
+    <h1>Liste des Étudiants</h1>
     <table class="table table-bordered">
         <thead>
         <tr>
             <th>ID</th>
-            <th>Name</th>
-            <th>Prenom</th>
-            <th>Email</th>
-            <th>Poste</th>
-            <th>Salaire</th>
+            <th>Nomducours</th>
+            <th>Description</th>
             <th>Actions</th>
         </tr>
         </thead>
         <tbody>
-        <c:forEach var="person" items="${ListP}">
+        <c:forEach var="student" items="${listStudents}">
             <tr>
-                <td>${person.id}</td>
-                <td>${person.nom}</td>
-                <td>${person.prenom}</td>
-                <td>${person.email}</td>
-                <td>${person.poste}</td>
-                <td>${person.salaire}</td>
+                <td>${student.id}</td>
+                <td>${student.nomducours}</td>
+                <td>${student.description}</td>
                 <td>
-                    <a href="update?id=${person.id}" class="btn btn-warning btn-sm">Modifier</a>
-                    <form action="delete" method="post" style="display:inline;">
-                        <input type="hidden" name="id" value="${person.id}">
+                    <a href="students?action=edit&id=${student.id}" class="btn btn-warning btn-sm">Modifier</a>
+                    <form action="students?action=delete" method="post" style="display:inline;">
+                        <input type="hidden" name="id" value="${student.id}">
                         <button type="submit" class="btn btn-danger btn-sm">Supprimer</button>
                     </form>
                 </td>
@@ -75,7 +69,7 @@
         </c:forEach>
         </tbody>
     </table>
-    <a href="create" class="btn btn-success">Add New Employee</a>
+    <a href="/insert" class="btn btn-success">Ajouter un nouvel étudiant</a>
 </div>
 </body>
 </html>

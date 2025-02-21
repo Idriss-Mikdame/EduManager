@@ -47,7 +47,7 @@
 <body>
 <div class="container mt-5">
     <h1 style="color: #007bff">Ajouter un Student </h1>
-    <form action="createe" method="post">
+    <form action="/insert" method="post">
         <div class="form-group">
             <label for="name">Nom:</label>
             <input type="text" class="form-control" name="nom" id="name">

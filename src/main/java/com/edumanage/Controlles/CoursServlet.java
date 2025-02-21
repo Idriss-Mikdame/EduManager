@@ -2,50 +2,75 @@ package com.edumanage.Controlles;
 
 import com.edumanage.dao.coursDAO;
 import com.edumanage.model.Cours;
+import com.edumanage.model.Student;
+import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.sql.SQLException;
+import java.util.List;
 
-@WebServlet("/create")
+@WebServlet("/")
 public class CoursServlet extends HttpServlet {
     private coursDAO courDAO;
 
     @Override
     public void init() throws ServletException {
-        // Initialisation de l'instance de coursDAO dans le champ d'instance
         courDAO = new coursDAO();
     }
-
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        doGet(request, response);
+    }
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        request.getRequestDispatcher("/WEB-INF/Cours/AjouterCours.jsp").forward(request, response);
-    }
-
-    @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        // Si le formulaire fournit un id, on le récupère ; sinon, on utilisera l'auto-incrémentation de la BDD
-        int id = 0;
-        String idParam = request.getParameter("id");
-        if (idParam != null && !idParam.isEmpty()) {
-            try {
-                id = Integer.parseInt(idParam);
-            } catch (NumberFormatException e) {
-                // Optionnel : gérer l'erreur de format ici
-                e.printStackTrace();
+        String action = request.getServletPath();
+        try {
+            switch (action) {
+                case "/new":
+                    showNewForm(request, response);
+                    break;
+                case "/insert":
+                    insertCours(request, response);
+                    break;
+                case "/list":
+                    listCours(request, response);
+                    break;
+                default:
+                    response.sendRedirect("list");
+                    break;
             }
+        } catch (Exception ex) {
+            throw new ServletException(ex);
         }
-        String nomducours = request.getParameter("NomCours");
-        String description = request.getParameter("Description");
-
-        Cours cour = new Cours(id, nomducours, description);
-        courDAO.createCours(cour); // Utilisation de l'instance DAO initialisée dans init()
-
-        response.sendRedirect(request.getContextPath() + "/read");
     }
+
+    private void listCours(HttpServletRequest request, HttpServletResponse response)
+            throws SQLException, IOException, ServletException {
+        List<Cours> listCours = courDAO.selectAllCours();
+        request.setAttribute("coursList", listCours);
+        RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/Cours/AfficherCours.jsp");
+        dispatcher.forward(request, response);
+    }
+
+    private void insertCours(HttpServletRequest request, HttpServletResponse response)
+            throws IOException {
+        String nomcour = request.getParameter("nomcour");
+        String description = request.getParameter("description");
+
+        Cours newCours = new Cours(nomcour, description);
+        courDAO.insertCours(newCours);
+        response.sendRedirect("list");
+    }
+
+    private void showNewForm(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/Cours/AjouterCours.jsp");
+        dispatcher.forward(request, response);
+    }
+
 
 }
