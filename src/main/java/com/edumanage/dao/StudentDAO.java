@@ -26,10 +26,10 @@ public class StudentDAO {
                         "nom VARCHAR(100) NOT NULL, " +
                         "prenom VARCHAR(100) NOT NULL, " +
                         "email VARCHAR(255) NOT NULL, " +
-                        "datenaissance VARCHAR(100) NOT NULL" + // Fixed typo
+                        "datenaissance VARCHAR(100) NOT NULL" +
                         ");";
                 statement.executeUpdate(createTableSQL);
-                System.out.println("Table 'student' created successfully");
+                System.out.println("Table 'student' ensured.");
             }
 
         } catch (ClassNotFoundException e) {
@@ -47,12 +47,12 @@ public class StudentDAO {
             return;
         }
 
-        String query = "INSERT INTO student (nom, prenom, email, datenaissance) VALUES (?, ?, ?, ?)"; // Fixed column name
+        String query = "INSERT INTO student (nom, prenom, email, datenaissance) VALUES (?, ?, ?, ?)";
         try (PreparedStatement stmt = connection.prepareStatement(query)) {
             stmt.setString(1, student.getNom());
             stmt.setString(2, student.getPrenom());
             stmt.setString(3, student.getEmail());
-            stmt.setString(4, student.getDatenaiss()); // Ensure getDatenaiss() exists in Student class
+            stmt.setString(4, student.getDatenaiss());
             stmt.executeUpdate();
             System.out.println("Student inserted successfully");
         } catch (SQLException e) {
@@ -61,10 +61,9 @@ public class StudentDAO {
         }
     }
 
-
     public List<Student> selectAllEtudiant() {
         List<Student> etudiantList = new ArrayList<>();
-        String query = "SELECT id, nom, prenom, email, datenaissance FROM student"; // Fixed column names
+        String query = "SELECT id, nom, prenom, email, datenaissance FROM student";
 
         try (PreparedStatement preparedStatement = connection.prepareStatement(query);
              ResultSet rs = preparedStatement.executeQuery()) {

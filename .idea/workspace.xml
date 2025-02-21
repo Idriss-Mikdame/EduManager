@@ -15,8 +15,6 @@
       <change beforePath="$PROJECT_DIR$/src/main/java/com/edumanage/Controlles/StudentServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/edumanage/Controlles/StudentServlet.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/edumanage/dao/StudentDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/edumanage/dao/StudentDAO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/edumanage/dao/coursDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/edumanage/dao/coursDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/edumanage/model/Cours.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/edumanage/model/Cours.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/Cours/AfficherCours.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/Cours/AfficherCours.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/Cours/AjouterCours.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/Cours/AjouterCours.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/Student/AfficherStudent.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/Student/AfficherStudent.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/Student/AjouterStudent.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/Student/AjouterStudent.jsp" afterDir="false" />
@@ -55,6 +53,9 @@
   &quot;associatedIndex&quot;: 5
 }</component>
   <component name="ProjectId" id="2tDp7Tcw1bQbQGchlnY5EMEjQi3" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -64,6 +65,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "Tomcat Server.Tomcat  11.0.executor": "Run",
+    "Tomcat Server.Tomcat 11.0.2.executor": "Run",
     "Tomcat Server.Tomcat 11.0.21.executor": "Run",
     "git-widget-placeholder": "main",
     "kotlin-language-version-configured": "true",
@@ -84,8 +86,7 @@
     </key>
   </component>
   <component name="RunManager">
-    <configuration name="Tomcat  11.0" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat  11.0" ALTERNATIVE_JRE_ENABLED="false" nameIsGenerated="true">
-      <option name="OPEN_IN_BROWSER_URL" value="http://localhost:8084/new" />
+    <configuration name="Tomcat 11.0.21" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 11.0.21" ALTERNATIVE_JRE_ENABLED="false" nameIsGenerated="true">
       <option name="UPDATING_POLICY" value="restart-server" />
       <deployment>
         <artifact name="Edumanager:war">
@@ -95,8 +96,8 @@
         </artifact>
       </deployment>
       <server-settings>
-        <option name="BASE_DIRECTORY_NAME" value="898f2c04-5a96-4c3b-90a0-d05436e2a66a" />
-        <option name="HTTP_PORT" value="8084" />
+        <option name="BASE_DIRECTORY_NAME" value="8c7afc18-df35-4de1-ad05-a55d713b0476" />
+        <option name="HTTP_PORT" value="8081" />
       </server-settings>
       <predefined_log_file enabled="true" id="Tomcat" />
       <predefined_log_file enabled="true" id="Tomcat Catalina" />

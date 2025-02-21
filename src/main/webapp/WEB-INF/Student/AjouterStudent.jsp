@@ -47,7 +47,7 @@
 <body>
 <div class="container mt-5">
     <h1 style="color: #007bff">Ajouter un Student </h1>
-    <form action="/insert" method="post">
+    <form action="/student" method="post">
         <div class="form-group">
             <label for="name">Nom:</label>
             <input type="text" class="form-control" name="nom" id="name">
@@ -62,7 +62,7 @@
         </div>
         <div class="form-group">
             <label for="poste">Datenaiss:</label>
-            <input type="text" class="form-control" name="Datenaiss" id="poste">
+            <input type="text" class="form-control" name="datenaissance" id="poste">
         </div>
         <button type="submit" class="btn btn-custom" style="background-color: cadetblue">Entrer</button>
     </form>

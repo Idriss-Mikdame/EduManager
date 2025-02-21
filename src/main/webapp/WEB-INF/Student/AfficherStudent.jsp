@@ -73,7 +73,7 @@
         </c:forEach>
         </tbody>
     </table>
-    <a href="/insert" class="btn btn-success">Ajouter un nouvel étudiant</a>
+    <a href="/student/new" class="btn btn-success">Ajouter un nouvel étudiant</a>
 </div>
 </body>
 </html>

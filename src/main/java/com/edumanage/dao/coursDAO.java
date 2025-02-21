@@ -1,7 +1,6 @@
 package com.edumanage.dao;
 
 import com.edumanage.model.Cours;
-import com.edumanage.model.Student;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -27,7 +26,7 @@ public class coursDAO {
                         "description VARCHAR(255) NOT NULL" +
                         ");";
                 statement.executeUpdate(createTableSQL);
-                System.out.println("Table 'cours' created successfully");
+                System.out.println("Table 'cours' ensured.");
             }
 
         } catch (ClassNotFoundException e) {
@@ -39,7 +38,6 @@ public class coursDAO {
         }
     }
 
-    // Insert a new course into the database
     public void insertCours(Cours cours) {
         if (connection == null) {
             System.err.println("Database connection not established!");
@@ -57,10 +55,9 @@ public class coursDAO {
         }
     }
 
-    // Select all courses from the database
     public List<Cours> selectAllCours() {
         List<Cours> coursList = new ArrayList<>();
-        String query = "SELECT id, nomducours, description FROM student"; // Fixed column names
+        String query = "SELECT id, nomducours, description FROM cours"; // تصحيح اسم الجدول
 
         try (PreparedStatement preparedStatement = connection.prepareStatement(query);
              ResultSet rs = preparedStatement.executeQuery()) {
@@ -70,16 +67,12 @@ public class coursDAO {
                 String nomducours = rs.getString("nomducours");
                 String description = rs.getString("description");
 
-
                 coursList.add(new Cours(id, nomducours, description));
             }
         } catch (SQLException e) {
-            System.err.println("Error fetching students: " + e.getMessage());
+            System.err.println("Error fetching courses: " + e.getMessage());
             e.printStackTrace();
         }
         return coursList;
     }
-
-
-
 }

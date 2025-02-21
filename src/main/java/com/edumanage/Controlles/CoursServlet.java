@@ -2,7 +2,6 @@ package com.edumanage.Controlles;
 
 import com.edumanage.dao.coursDAO;
 import com.edumanage.model.Cours;
-import com.edumanage.model.Student;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -13,7 +12,7 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
 
-@WebServlet("/")
+@WebServlet("/cours/*")
 public class CoursServlet extends HttpServlet {
     private coursDAO courDAO;
 
@@ -21,27 +20,35 @@ public class CoursServlet extends HttpServlet {
     public void init() throws ServletException {
         courDAO = new coursDAO();
     }
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
         doGet(request, response);
     }
+
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String action = request.getServletPath();
+        String action = request.getPathInfo(); // استخدام getPathInfo بدل getRequestURI
+        System.out.println(action);
         try {
-            switch (action) {
-                case "/new":
-                    showNewForm(request, response);
-                    break;
-                case "/insert":
-                    insertCours(request, response);
-                    break;
-                case "/list":
-                    listCours(request, response);
-                    break;
-                default:
-                    response.sendRedirect("list");
-                    break;
+            if (action == null || action.equals("/")) {
+                listCours(request, response);
+            } else {
+                switch (action) {
+                    case "/newcour":
+                        showNewForm(request, response);
+                        break;
+                    case "/insertcour":
+                        insertCours(request, response);
+                        break;
+                    case "/listcour": // إصلاح المسار
+                        listCours(request, response);
+                        break;
+                    default:
+                        response.sendError(HttpServletResponse.SC_NOT_FOUND);
+                        break;
+                }
             }
         } catch (Exception ex) {
             throw new ServletException(ex);
@@ -63,7 +70,7 @@ public class CoursServlet extends HttpServlet {
 
         Cours newCours = new Cours(nomcour, description);
         courDAO.insertCours(newCours);
-        response.sendRedirect("list");
+        response.sendRedirect("listcour");
     }
 
     private void showNewForm(HttpServletRequest request, HttpServletResponse response)
@@ -71,6 +78,4 @@ public class CoursServlet extends HttpServlet {
         RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/Cours/AjouterCours.jsp");
         dispatcher.forward(request, response);
     }
-
-
 }

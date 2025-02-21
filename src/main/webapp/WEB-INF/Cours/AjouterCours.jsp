@@ -47,7 +47,7 @@
 <body>
 <div class="container mt-5">
     <h1 style="color: #007bff">Ajouter un cours </h1>
-    <form action="/insert" method="post">
+    <form action="/insertcour" method="post">
         <div class="form-group">
             <label for="name">Nom du cours:</label>
             <input type="text" class="form-control" name="NomCours" id="name">
