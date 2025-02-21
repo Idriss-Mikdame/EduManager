@@ -10,14 +10,26 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8d2db76e-ffc5-4162-bd5a-2b6e810e647a" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/edumanage/Controllers/CoursServlet.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/edumanage/Controllers/StudentServlet.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/edumanage/Models/Cours.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/edumanage/Models/Student.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/edumanage/Models/StudentCourse.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/edumanage/dao/StudentCourseDAO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/edumanage/Controlles/CoursServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/edumanage/Controlles/CoursServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/edumanage/Controlles/StudentServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/edumanage/Controlles/StudentServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/edumanage/Controlles/CoursServlet.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/edumanage/Controlles/StudentServlet.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/edumanage/dao/StudentDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/edumanage/dao/StudentDAO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/edumanage/dao/coursDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/edumanage/dao/coursDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/edumanage/model/Cours.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/edumanage/model/Student.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/Cours/AfficherCours.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/Cours/AfficherCours.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/Cours/AjouterCours.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/Cours/AjouterCours.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/Cours/ModifierCours.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/Cours/ModifierCours.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/Student/AfficherStudent.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/Student/AfficherStudent.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/Student/AjouterStudent.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/Student/AjouterStudent.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/Student/ModiffierStudent.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/Student/ModiffierStudent.jsp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -27,8 +39,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Class" />
         <option value="Jsp File" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -63,6 +75,7 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "Tomcat Server.Tomcat  11.0.executor": "Run",
     "Tomcat Server.Tomcat 11.0.2.executor": "Run",
@@ -270,6 +283,7 @@
       <option name="presentableId" value="Default" />
       <updated>1739896332897</updated>
       <workItem from="1739896333873" duration="25155000" />
+      <workItem from="1740151345061" duration="1249000" />
     </task>
     <servers />
   </component>

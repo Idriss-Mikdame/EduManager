@@ -1,13 +1,11 @@
 package com.edumanage.dao;
 
-import com.edumanage.model.Student;
-
+import com.edumanage.Models.Student;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
 public class StudentDAO {
-
     private Connection connection;
 
     public StudentDAO() {
@@ -82,5 +80,46 @@ public class StudentDAO {
             e.printStackTrace();
         }
         return etudiantList;
+    }
+
+    public void updateStudent(Student student) {
+        String query = "UPDATE student SET nom = ?, prenom = ?, email = ?, datenaissance = ? WHERE id = ?";
+        try (PreparedStatement stmt = connection.prepareStatement(query)) {
+            stmt.setString(1, student.getNom());
+            stmt.setString(2, student.getPrenom());
+            stmt.setString(3, student.getEmail());
+            stmt.setString(4, student.getDatenaiss());
+            stmt.setInt(5, student.getId());
+            stmt.executeUpdate();
+        } catch (SQLException e) {
+            System.err.println("Error updating student: " + e.getMessage());
+            e.printStackTrace();
+        }
+    }
+
+    public void deleteStudent(int id) {
+        String query = "DELETE FROM student WHERE id = ?";
+        try (PreparedStatement stmt = connection.prepareStatement(query)) {
+            stmt.setInt(1, id);
+            stmt.executeUpdate();
+        } catch (SQLException e) {
+            System.err.println("Error deleting student: " + e.getMessage());
+            e.printStackTrace();
+        }
+    }
+
+    public Student selectStudentById(int id) {
+        String query = "SELECT id, nom, prenom, email, datenaissance FROM student WHERE id = ?";
+        try (PreparedStatement stmt = connection.prepareStatement(query)) {
+            stmt.setInt(1, id);
+            ResultSet rs = stmt.executeQuery();
+            if (rs.next()) {
+                return new Student(rs.getInt("id"), rs.getString("nom"), rs.getString("prenom"), rs.getString("email"), rs.getString("datenaissance"));
+            }
+        } catch (SQLException e) {
+            System.err.println("Error fetching student by ID: " + e.getMessage());
+            e.printStackTrace();
+        }
+        return null;
     }
 }

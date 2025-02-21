@@ -1,75 +1,30 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib uri="http://java.sun.com/jstl/core_rt" prefix="c" %>
 <html>
 <head>
-    <title>Liste des Étudiants</title>
-    <!-- Ajout de Bootstrap CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <!-- CSS personnalisé -->
-    <style>
-        body {
-            background-color: #f0f2f5;
-        }
-        .container {
-            background-color: #ffffff;
-            padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        }
-        h1 {
-            color: #343a40;
-            text-align: center;
-            margin-bottom: 20px;
-        }
-        table {
-            border-collapse: separate;
-            border-spacing: 0 15px;
-        }
-        th {
-            background-color: #007bff;
-            color: white;
-            padding: 10px;
-        }
-        td {
-            background-color: #f8f9fa;
-            padding: 10px;
-            text-align: center;
-            vertical-align: middle;
-        }
-        .btn-sm {
-            padding: 5px 10px;
-        }
-    </style>
+    <title>List of Courses</title>
 </head>
 <body>
-<div class="container mt-5">
-    <h1>Liste des Étudiants</h1>
-    <table class="table table-bordered">
-        <thead>
+<h1>List of Courses</h1>
+<table border="1">
+    <tr>
+        <th>ID</th>
+        <th>Course Name</th>
+        <th>Description</th>
+        <th>Actions</th>
+    </tr>
+    <c:forEach var="cours" items="${coursList}">
         <tr>
-            <th>ID</th>
-            <th>Nomducours</th>
-            <th>Description</th>
-            <th>Actions</th>
+            <td>${cours.id}</td>
+            <td>${cours.nomducours}</td>
+            <td>${cours.description}</td>
+            <td>
+                <a href="edit?id=${cours.id}">Edit</a>
+                <a href="delete?id=${cours.id}">Delete</a>
+            </td>
         </tr>
-        </thead>
-        <tbody>
-        <c:forEach var="student" items="${listStudents}">
-            <tr>
-                <td>${student.id}</td>
-                <td>${student.nomducours}</td>
-                <td>${student.description}</td>
-                <td>
-                    <a href="students?action=edit&id=${student.id}" class="btn btn-warning btn-sm">Modifier</a>
-                    <form action="students?action=delete" method="post" style="display:inline;">
-                        <input type="hidden" name="id" value="${student.id}">
-                        <button type="submit" class="btn btn-danger btn-sm">Supprimer</button>
-                    </form>
-                </td>
-            </tr>
-        </c:forEach>
-        </tbody>
-    </table>
-    <a href="/insert" class="btn btn-success">Ajouter un nouvel étudiant</a>
-</div>
+    </c:forEach>
+</table>
+<a href="newcour">Add New Course</a>
 </body>
 </html>

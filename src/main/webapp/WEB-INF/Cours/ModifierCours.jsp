@@ -1,16 +1,19 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: idriss
-  Date: 18/02/2025
-  Time: 17:36
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Title</title>
+    <title>Edit Course</title>
 </head>
 <body>
-
+<h1>Edit Course</h1>
+<form action="update" method="post">
+    <input type="hidden" name="id" value="${cours.id}">
+    <label for="nomcour">Course Name:</label>
+    <input type="text" id="nomcour" name="nomcour" value="${cours.nomducours}" required>
+    <br>
+    <label for="description">Description:</label>
+    <input type="text" id="description" name="description" value="${cours.description}" required>
+    <br>
+    <input type="submit" value="Update Course">
+</form>
 </body>
 </html>

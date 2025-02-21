@@ -1,29 +1,30 @@
-package com.edumanage.model;
-
-import java.util.List;
+package com.edumanage.Models;
 
 public class Student {
-    int id;
-    String nom;
-    String prenom;
-    String email;
-    String Datenaiss;
+    private int id;
+    private String nom;
+    private String prenom;
+    private String email;
+    private String datenaiss;
+
+    public Student() {}
+
+    public Student(String nom, String prenom, String email, String datenaiss) {
+        this.nom = nom;
+        this.prenom = prenom;
+        this.email = email;
+        this.datenaiss = datenaiss;
+    }
 
     public Student(int id, String nom, String prenom, String email, String datenaiss) {
         this.id = id;
         this.nom = nom;
         this.prenom = prenom;
         this.email = email;
-        Datenaiss = datenaiss;
+        this.datenaiss = datenaiss;
     }
 
-    public Student(String nom, String email, String prenom, String datenaiss) {
-        this.nom = nom;
-        this.email = email;
-        this.prenom = prenom;
-        Datenaiss = datenaiss;
-    }
-
+    // Getters and Setters
     public int getId() {
         return id;
     }
@@ -48,19 +49,19 @@ public class Student {
         this.prenom = prenom;
     }
 
-    public String getDatenaiss() {
-        return Datenaiss;
-    }
-
-    public void setDatenaiss(String datenaiss) {
-        Datenaiss = datenaiss;
-    }
-
     public String getEmail() {
         return email;
     }
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public String getDatenaiss() {
+        return datenaiss;
+    }
+
+    public void setDatenaiss(String datenaiss) {
+        this.datenaiss = datenaiss;
     }
 }

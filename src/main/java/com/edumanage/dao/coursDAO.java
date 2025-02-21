@@ -1,17 +1,17 @@
 package com.edumanage.dao;
 
-import com.edumanage.model.Cours;
+import com.edumanage.Models.Cours;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
 public class coursDAO {
-
     private Connection connection;
 
     public coursDAO() {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
+            System.out.println("Connecting to database...");
             this.connection = DriverManager.getConnection(
                     "jdbc:mysql://localhost:3306/edumanger", "root", "");
 
@@ -26,7 +26,7 @@ public class coursDAO {
                         "description VARCHAR(255) NOT NULL" +
                         ");";
                 statement.executeUpdate(createTableSQL);
-                System.out.println("Table 'cours' ensured.");
+                System.out.println("Table 'cours' created successfully");
             }
 
         } catch (ClassNotFoundException e) {
@@ -57,7 +57,7 @@ public class coursDAO {
 
     public List<Cours> selectAllCours() {
         List<Cours> coursList = new ArrayList<>();
-        String query = "SELECT id, nomducours, description FROM cours"; // تصحيح اسم الجدول
+        String query = "SELECT id, nomducours, description FROM cours";
 
         try (PreparedStatement preparedStatement = connection.prepareStatement(query);
              ResultSet rs = preparedStatement.executeQuery()) {
@@ -74,5 +74,44 @@ public class coursDAO {
             e.printStackTrace();
         }
         return coursList;
+    }
+
+    public void updateCours(Cours cours) {
+        String query = "UPDATE cours SET nomducours = ?, description = ? WHERE id = ?";
+        try (PreparedStatement stmt = connection.prepareStatement(query)) {
+            stmt.setString(1, cours.getNomducours());
+            stmt.setString(2, cours.getDescription());
+            stmt.setInt(3, cours.getId());
+            stmt.executeUpdate();
+        } catch (SQLException e) {
+            System.err.println("Error updating cours: " + e.getMessage());
+            e.printStackTrace();
+        }
+    }
+
+    public void deleteCours(int id) {
+        String query = "DELETE FROM cours WHERE id = ?";
+        try (PreparedStatement stmt = connection.prepareStatement(query)) {
+            stmt.setInt(1, id);
+            stmt.executeUpdate();
+        } catch (SQLException e) {
+            System.err.println("Error deleting cours: " + e.getMessage());
+            e.printStackTrace();
+        }
+    }
+
+    public Cours selectCoursById(int id) {
+        String query = "SELECT id, nomducours, description FROM cours WHERE id = ?";
+        try (PreparedStatement stmt = connection.prepareStatement(query)) {
+            stmt.setInt(1, id);
+            ResultSet rs = stmt.executeQuery();
+            if (rs.next()) {
+                return new Cours(rs.getInt("id"), rs.getString("nomducours"), rs.getString("description"));
+            }
+        } catch (SQLException e) {
+            System.err.println("Error fetching cours by ID: " + e.getMessage());
+            e.printStackTrace();
+        }
+        return null;
     }
 }

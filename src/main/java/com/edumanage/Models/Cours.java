@@ -1,9 +1,16 @@
-package com.edumanage.model;
+package com.edumanage.Models;
 
 public class Cours {
-    int id;
-    String nomducours;
-    String description;
+    private int id;
+    private String nomducours;
+    private String description;
+
+    public Cours() {}
+
+    public Cours(String nomducours, String description) {
+        this.nomducours = nomducours;
+        this.description = description;
+    }
 
     public Cours(int id, String nomducours, String description) {
         this.id = id;
@@ -11,11 +18,7 @@ public class Cours {
         this.description = description;
     }
 
-    public Cours(String nomducours, String description) {
-        this.nomducours = nomducours;
-        this.description = description;
-    }
-
+    // Getters and Setters
     public int getId() {
         return id;
     }

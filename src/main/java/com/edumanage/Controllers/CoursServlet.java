@@ -1,13 +1,14 @@
-package com.edumanage.Controlles;
+package com.edumanage.Controllers;
 
+import com.edumanage.Models.Cours;
 import com.edumanage.dao.coursDAO;
-import com.edumanage.model.Cours;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
@@ -21,29 +22,37 @@ public class CoursServlet extends HttpServlet {
         courDAO = new coursDAO();
     }
 
-    protected void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         doGet(request, response);
     }
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String action = request.getPathInfo(); // استخدام getPathInfo بدل getRequestURI
+        String action = request.getRequestURI();
         System.out.println(action);
         try {
             if (action == null || action.equals("/")) {
                 listCours(request, response);
             } else {
                 switch (action) {
-                    case "/newcour":
+                    case "/cours/newcour":
                         showNewForm(request, response);
                         break;
-                    case "/insertcour":
+                    case "/cours/insertcour":
                         insertCours(request, response);
                         break;
-                    case "/listcour": // إصلاح المسار
+                    case "/cours/listcour":
                         listCours(request, response);
+                        break;
+                    case "/cours/edit":
+                        showEditForm(request, response);
+                        break;
+                    case "/cours/update":
+                        updateCours(request, response);
+                        break;
+                    case "/cours/delete":
+                        deleteCours(request, response);
                         break;
                     default:
                         response.sendError(HttpServletResponse.SC_NOT_FOUND);
@@ -75,7 +84,33 @@ public class CoursServlet extends HttpServlet {
 
     private void showNewForm(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/Cours/AjouterCours.jsp");
+        request.getRequestDispatcher("/WEB-INF/Cours/AjouterCours.jsp").forward(request, response);
+    }
+
+    private void showEditForm(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        int id = Integer.parseInt(request.getParameter("id"));
+        Cours existingCours = courDAO.selectCoursById(id);
+        RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/Cours/ModifierCours.jsp");
+        request.setAttribute("cours", existingCours);
         dispatcher.forward(request, response);
+    }
+
+    private void updateCours(HttpServletRequest request, HttpServletResponse response)
+            throws IOException {
+        int id = Integer.parseInt(request.getParameter("id"));
+        String nomcour = request.getParameter("nomcour");
+        String description = request.getParameter("description");
+
+        Cours cours = new Cours(id, nomcour, description);
+        courDAO.updateCours(cours);
+        response.sendRedirect("listcour");
+    }
+
+    private void deleteCours(HttpServletRequest request, HttpServletResponse response)
+            throws IOException {
+        int id = Integer.parseInt(request.getParameter("id"));
+        courDAO.deleteCours(id);
+        response.sendRedirect("listcour");
     }
 }
