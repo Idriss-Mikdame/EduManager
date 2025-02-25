@@ -4,6 +4,8 @@
     <title>Gestion des Étudiants et des Cours</title>
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <!-- Custom CSS -->
     <style>
         body {
@@ -26,6 +28,7 @@
             justify-content: center;
             gap: 20px;
             margin-bottom: 30px;
+            flex-wrap: wrap;
         }
         .btn-custom {
             padding: 15px 30px;
@@ -54,6 +57,18 @@
         }
         .btn-secondary-custom:hover {
             background-color: #5a6268;
+        }
+        .btn-success-custom {
+            background-color: #28a745; /* Vert pour Lister les Étudiants */
+        }
+        .btn-success-custom:hover {
+            background-color: #218838;
+        }
+        .btn-info-custom {
+            background-color: #17a2b8; /* Bleu clair pour Lister les Cours */
+        }
+        .btn-info-custom:hover {
+            background-color: #138496;
         }
         .form-container {
             max-width: 500px;
@@ -113,6 +128,9 @@
             bottom: 0;
             width: 100%;
         }
+        .btn-icon {
+            margin-right: 8px;
+        }
     </style>
 </head>
 <body>
@@ -123,8 +141,18 @@
 
 <div class="container">
     <div class="btn-container">
-        <a class="btn-custom btn-primary-custom" href="student/new">Ajouter un Étudiant</a>
-        <a class="btn-custom btn-secondary-custom" href="cours/newcour">Ajouter un Cours</a>
+        <a class="btn-custom btn-primary-custom" href="student/new">
+            <i class="fas fa-user-plus btn-icon"></i>Ajouter un Étudiant
+        </a>
+        <a class="btn-custom btn-secondary-custom" href="cours/newcour">
+            <i class="fas fa-book-open btn-icon"></i>Ajouter un Cours
+        </a>
+        <a class="btn-custom btn-success-custom" href="student/list">
+            <i class="fas fa-list btn-icon"></i>Liste des Étudiants
+        </a>
+        <a class="btn-custom btn-info-custom" href="cours/listcour">
+            <i class="fas fa-clipboard-list btn-icon"></i>Liste des Cours
+        </a>
     </div>
 
     <!-- Formulaire pour ajouter un étudiant -->

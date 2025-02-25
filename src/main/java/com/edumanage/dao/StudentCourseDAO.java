@@ -1,6 +1,6 @@
 package com.edumanage.dao;
 
-import com.edumanage.Models.StudentCourse;
+import com.edumanage.dao.StudentCourseDAO;
 
 import java.sql.*;
 import java.util.ArrayList;

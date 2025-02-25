@@ -11,6 +11,7 @@ public class StudentDAO {
     public StudentDAO() {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
+            System.out.println("Connecting to database...");
             this.connection = DriverManager.getConnection(
                     "jdbc:mysql://localhost:3306/edumanger", "root", "");
 
@@ -22,9 +23,9 @@ public class StudentDAO {
                 String createTableSQL = "CREATE TABLE IF NOT EXISTS student (" +
                         "id INT AUTO_INCREMENT PRIMARY KEY, " +
                         "nom VARCHAR(100) NOT NULL, " +
-                        "prenom VARCHAR(100) NOT NULL, " +
-                        "email VARCHAR(255) NOT NULL, " +
-                        "datenaissance VARCHAR(100) NOT NULL" +
+                        "email VARCHAR(100) NOT NULL, " +
+                        "prenom VARCHAR(255) NOT NULL, " +
+                        "Datnaisse VARCHAR(100) NOT NULL" +
                         ");";
                 statement.executeUpdate(createTableSQL);
                 System.out.println("Table 'student' ensured.");
@@ -45,7 +46,7 @@ public class StudentDAO {
             return;
         }
 
-        String query = "INSERT INTO student (nom, prenom, email, datenaissance) VALUES (?, ?, ?, ?)";
+        String query = "INSERT INTO student (nom, prenom, email, Datnaisse) VALUES (?, ?, ?, ?)";
         try (PreparedStatement stmt = connection.prepareStatement(query)) {
             stmt.setString(1, student.getNom());
             stmt.setString(2, student.getPrenom());
@@ -61,7 +62,7 @@ public class StudentDAO {
 
     public List<Student> selectAllEtudiant() {
         List<Student> etudiantList = new ArrayList<>();
-        String query = "SELECT id, nom, prenom, email, datenaissance FROM student";
+        String query = "SELECT id, nom, prenom, email, Datnaisse FROM student";
 
         try (PreparedStatement preparedStatement = connection.prepareStatement(query);
              ResultSet rs = preparedStatement.executeQuery()) {
@@ -71,7 +72,7 @@ public class StudentDAO {
                 String nom = rs.getString("nom");
                 String prenom = rs.getString("prenom");
                 String email = rs.getString("email");
-                String datenaissance = rs.getString("datenaissance");
+                String datenaissance = rs.getString("Datnaisse");
 
                 etudiantList.add(new Student(id, nom, prenom, email, datenaissance));
             }
@@ -83,7 +84,7 @@ public class StudentDAO {
     }
 
     public void updateStudent(Student student) {
-        String query = "UPDATE student SET nom = ?, prenom = ?, email = ?, datenaissance = ? WHERE id = ?";
+        String query = "UPDATE student SET nom = ?, prenom = ?, email = ?, Datnaisse = ? WHERE id = ?";
         try (PreparedStatement stmt = connection.prepareStatement(query)) {
             stmt.setString(1, student.getNom());
             stmt.setString(2, student.getPrenom());
@@ -109,12 +110,12 @@ public class StudentDAO {
     }
 
     public Student selectStudentById(int id) {
-        String query = "SELECT id, nom, prenom, email, datenaissance FROM student WHERE id = ?";
+        String query = "SELECT id, nom, prenom, email, Datnaisse FROM student WHERE id = ?";
         try (PreparedStatement stmt = connection.prepareStatement(query)) {
             stmt.setInt(1, id);
             ResultSet rs = stmt.executeQuery();
             if (rs.next()) {
-                return new Student(rs.getInt("id"), rs.getString("nom"), rs.getString("prenom"), rs.getString("email"), rs.getString("datenaissance"));
+                return new Student(rs.getInt("id"), rs.getString("nom"), rs.getString("prenom"), rs.getString("email"), rs.getString("Datnaisse"));
             }
         } catch (SQLException e) {
             System.err.println("Error fetching student by ID: " + e.getMessage());
