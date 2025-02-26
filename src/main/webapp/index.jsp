@@ -23,6 +23,17 @@
             margin-bottom: 30px;
             font-weight: bold;
         }
+        .welcome-section {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        .welcome-section p {
+            font-size: 18px;
+            color: #6c757d;
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
         .btn-container {
             display: flex;
             justify-content: center;
@@ -70,52 +81,59 @@
         .btn-info-custom:hover {
             background-color: #138496;
         }
-        .form-container {
-            max-width: 500px;
-            margin: 0 auto;
-            background-color: #ffffff;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-            border: 1px solid #dee2e6;
-            display: none; /* Hidden by default */
+        .btn-warning-custom {
+            background-color: #ffc107; /* Jaune pour Gestion des Inscriptions */
         }
-        .form-container.active {
-            display: block; /* Show when active */
+        .btn-warning-custom:hover {
+            background-color: #e0a800;
         }
-        label {
-            font-weight: bold;
-            color: #495057;
-            margin-bottom: 5px;
-            display: block;
+        .card-container {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 30px;
+            margin-bottom: 50px;
+            flex-wrap: wrap;
         }
-        input[type="text"],
-        input[type="email"] {
-            width: 100%;
-            padding: 10px;
-            margin-bottom: 15px;
-            border: 1px solid #ced4da;
-            border-radius: 5px;
-            font-size: 16px;
-        }
-        input[type="text"]:focus,
-        input[type="email"]:focus {
-            border-color: #80bdff;
-            outline: none;
-            box-shadow: 0 0 5px rgba(128, 189, 255, 0.5);
-        }
-        input[type="submit"] {
-            background-color: #28a745;
-            color: #ffffff;
+        .card {
+            width: 18rem;
             border: none;
-            padding: 10px 20px;
-            font-size: 16px;
-            border-radius: 5px;
-            cursor: pointer;
-            width: 100%;
+            border-radius: 10px;
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
-        input[type="submit"]:hover {
-            background-color: #218838;
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+        .card-img-top {
+            height: 160px;
+            background-color: #e9ecef;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .card-img-icon {
+            font-size: 60px;
+            color: #6c757d;
+        }
+        .card-body {
+            padding: 20px;
+        }
+        .card-title {
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 15px;
+            color: #343a40;
+        }
+        .card-text {
+            color: #6c757d;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .card-link-container {
+            text-align: center;
         }
         /* Footer Fixe */
         footer {
@@ -140,6 +158,10 @@
 </header>
 
 <div class="container">
+    <div class="welcome-section">
+        <p>Bienvenue dans l'application de gestion des étudiants et des cours. Cette plateforme vous permet de gérer efficacement les inscriptions des étudiants aux différents cours disponibles.</p>
+    </div>
+
     <div class="btn-container">
         <a class="btn-custom btn-primary-custom" href="student/new">
             <i class="fas fa-user-plus btn-icon"></i>Ajouter un Étudiant
@@ -153,70 +175,67 @@
         <a class="btn-custom btn-info-custom" href="cours/listcour">
             <i class="fas fa-clipboard-list btn-icon"></i>Liste des Cours
         </a>
+        <a class="btn-custom btn-warning-custom" href="studentcours/list">
+            <i class="fas fa-link btn-icon"></i>Gestion des Inscriptions
+        </a>
     </div>
 
-    <!-- Formulaire pour ajouter un étudiant -->
-    <div id="studentForm" class="form-container">
-        <h2>Ajouter un Étudiant</h2>
-        <form action="insertStudent" method="post">
-            <div class="form-group">
-                <label for="nom">First Name:</label>
-                <input type="text" id="nom" name="nom" required>
+    <div class="card-container">
+        <!-- Card for Students -->
+        <div class="card">
+            <div class="card-img-top">
+                <i class="fas fa-user-graduate card-img-icon"></i>
             </div>
-            <div class="form-group">
-                <label for="prenom">Last Name:</label>
-                <input type="text" id="prenom" name="prenom" required>
+            <div class="card-body">
+                <h5 class="card-title">Gestion des Étudiants</h5>
+                <p class="card-text">Ajoutez, modifiez ou supprimez des informations sur les étudiants.</p>
+                <div class="card-link-container">
+                    <a href="student/list" class="btn btn-success">
+                        <i class="fas fa-arrow-right"></i> Accéder
+                    </a>
+                </div>
             </div>
-            <div class="form-group">
-                <label for="email">Email:</label>
-                <input type="email" id="email" name="email" required>
-            </div>
-            <div class="form-group">
-                <label for="datenaissance">Date of Birth:</label>
-                <input type="text" id="datenaissance" name="datenaissance" required>
-            </div>
-            <input type="submit" value="Ajouter l'Étudiant">
-        </form>
-    </div>
+        </div>
 
-    <!-- Formulaire pour ajouter un cours -->
-    <div id="courseForm" class="form-container">
-        <h2>Ajouter un Cours</h2>
-        <form action="insertCourse" method="post">
-            <div class="form-group">
-                <label for="courseName">Nom du Cours:</label>
-                <input type="text" id="courseName" name="courseName" required>
+        <!-- Card for Courses -->
+        <div class="card">
+            <div class="card-img-top">
+                <i class="fas fa-book card-img-icon"></i>
             </div>
-            <div class="form-group">
-                <label for="courseCode">Code du Cours:</label>
-                <input type="text" id="courseCode" name="courseCode" required>
+            <div class="card-body">
+                <h5 class="card-title">Gestion des Cours</h5>
+                <p class="card-text">Gérez le catalogue de cours disponibles pour les étudiants.</p>
+                <div class="card-link-container">
+                    <a href="cours/listcour" class="btn btn-info">
+                        <i class="fas fa-arrow-right"></i> Accéder
+                    </a>
+                </div>
             </div>
-            <div class="form-group">
-                <label for="courseDescription">Description:</label>
-                <input type="text" id="courseDescription" name="courseDescription" required>
+        </div>
+
+        <!-- Card for Enrollments -->
+        <div class="card">
+            <div class="card-img-top">
+                <i class="fas fa-link card-img-icon"></i>
             </div>
-            <input type="submit" value="Ajouter le Cours">
-        </form>
+            <div class="card-body">
+                <h5 class="card-title">Gestion des Inscriptions</h5>
+                <p class="card-text">Associez des étudiants à des cours et gérez les inscriptions.</p>
+                <div class="card-link-container">
+                    <a href="studentcours/list" class="btn btn-warning">
+                        <i class="fas fa-arrow-right"></i> Accéder
+                    </a>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 
-<!-- Footer Fixe -->
 <footer>
     <p>&copy; 2025 Gestion des Étudiants et des Cours. Tous droits réservés.</p>
 </footer>
 
 <!-- Bootstrap JS -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-<!-- Custom JS -->
-<script>
-    function showForm(formId) {
-        // Hide all forms
-        document.querySelectorAll('.form-container').forEach(form => {
-            form.classList.remove('active');
-        });
-        // Show the selected form
-        document.getElementById(formId).classList.add('active');
-    }
-</script>
 </body>
 </html>
