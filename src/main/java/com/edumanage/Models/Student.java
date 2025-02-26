@@ -7,7 +7,9 @@ public class Student {
     private String email;
     private String datenaiss;
 
-    public Student() {}
+    public Student() {
+
+    }
 
     public Student(String nom, String prenom, String email, String datenaiss) {
         this.nom = nom;

@@ -14,7 +14,6 @@ public class StudentDAO {
             System.out.println("Connecting to database...");
             this.connection = DriverManager.getConnection(
                     "jdbc:mysql://localhost:3306/edumanger", "root", "");
-
             if (this.connection == null) {
                 throw new SQLException("Failed to establish database connection!");
             }
@@ -25,18 +24,13 @@ public class StudentDAO {
                         "nom VARCHAR(100) NOT NULL, " +
                         "email VARCHAR(100) NOT NULL, " +
                         "prenom VARCHAR(255) NOT NULL, " +
-                        "Datnaisse VARCHAR(100) NOT NULL" +
+                        "datenaissance VARCHAR(100) NOT NULL" +
                         ");";
                 statement.executeUpdate(createTableSQL);
                 System.out.println("Table 'student' ensured.");
             }
-
-        } catch (ClassNotFoundException e) {
-            System.err.println("MySQL JDBC Driver not found!");
-            e.printStackTrace();
-        } catch (SQLException e) {
-            System.err.println("Database connection error: " + e.getMessage());
-            e.printStackTrace();
+        } catch (ClassNotFoundException | SQLException e) {
+            throw new RuntimeException("Failed to initialize StudentDAO: " + e.getMessage(), e);
         }
     }
 
@@ -46,14 +40,14 @@ public class StudentDAO {
             return;
         }
 
-        String query = "INSERT INTO student (nom, prenom, email, Datnaisse) VALUES (?, ?, ?, ?)";
+        String query = "INSERT INTO student (nom, prenom, email, datenaissance) VALUES (?, ?, ?, ?)";
         try (PreparedStatement stmt = connection.prepareStatement(query)) {
             stmt.setString(1, student.getNom());
             stmt.setString(2, student.getPrenom());
             stmt.setString(3, student.getEmail());
             stmt.setString(4, student.getDatenaiss());
             stmt.executeUpdate();
-            System.out.println("Student inserted successfully");
+            System.out.println("Student inserted successfully: " + student.getNom());
         } catch (SQLException e) {
             System.err.println("Error inserting student: " + e.getMessage());
             e.printStackTrace();
@@ -62,17 +56,16 @@ public class StudentDAO {
 
     public List<Student> selectAllEtudiant() {
         List<Student> etudiantList = new ArrayList<>();
-        String query = "SELECT id, nom, prenom, email, Datnaisse FROM student";
+        String query = "SELECT id, nom, prenom, email, datenaissance FROM student";
 
         try (PreparedStatement preparedStatement = connection.prepareStatement(query);
              ResultSet rs = preparedStatement.executeQuery()) {
-
             while (rs.next()) {
                 int id = rs.getInt("id");
                 String nom = rs.getString("nom");
                 String prenom = rs.getString("prenom");
                 String email = rs.getString("email");
-                String datenaissance = rs.getString("Datnaisse");
+                String datenaissance = rs.getString("datenaissance");
 
                 etudiantList.add(new Student(id, nom, prenom, email, datenaissance));
             }
@@ -84,7 +77,7 @@ public class StudentDAO {
     }
 
     public void updateStudent(Student student) {
-        String query = "UPDATE student SET nom = ?, prenom = ?, email = ?, Datnaisse = ? WHERE id = ?";
+        String query = "UPDATE student SET nom = ?, prenom = ?, email = ?, datenaissance = ? WHERE id = ?";
         try (PreparedStatement stmt = connection.prepareStatement(query)) {
             stmt.setString(1, student.getNom());
             stmt.setString(2, student.getPrenom());
@@ -92,6 +85,7 @@ public class StudentDAO {
             stmt.setString(4, student.getDatenaiss());
             stmt.setInt(5, student.getId());
             stmt.executeUpdate();
+            System.out.println("Student updated successfully: " + student.getNom());
         } catch (SQLException e) {
             System.err.println("Error updating student: " + e.getMessage());
             e.printStackTrace();
@@ -103,6 +97,7 @@ public class StudentDAO {
         try (PreparedStatement stmt = connection.prepareStatement(query)) {
             stmt.setInt(1, id);
             stmt.executeUpdate();
+            System.out.println("Student deleted successfully: ID " + id);
         } catch (SQLException e) {
             System.err.println("Error deleting student: " + e.getMessage());
             e.printStackTrace();
@@ -110,17 +105,30 @@ public class StudentDAO {
     }
 
     public Student selectStudentById(int id) {
-        String query = "SELECT id, nom, prenom, email, Datnaisse FROM student WHERE id = ?";
+        String query = "SELECT id, nom, prenom, email, datenaissance FROM student WHERE id = ?";
         try (PreparedStatement stmt = connection.prepareStatement(query)) {
             stmt.setInt(1, id);
             ResultSet rs = stmt.executeQuery();
             if (rs.next()) {
-                return new Student(rs.getInt("id"), rs.getString("nom"), rs.getString("prenom"), rs.getString("email"), rs.getString("Datnaisse"));
+                return new Student(rs.getInt("id"), rs.getString("nom"), rs.getString("prenom"),
+                        rs.getString("email"), rs.getString("datenaissance"));
             }
         } catch (SQLException e) {
             System.err.println("Error fetching student by ID: " + e.getMessage());
             e.printStackTrace();
         }
         return null;
+    }
+
+    // Optional: Close connection when done
+    public void closeConnection() {
+        try {
+            if (connection != null && !connection.isClosed()) {
+                connection.close();
+                System.out.println("Database connection closed.");
+            }
+        } catch (SQLException e) {
+            System.err.println("Error closing connection: " + e.getMessage());
+        }
     }
 }
