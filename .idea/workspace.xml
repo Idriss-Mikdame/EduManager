@@ -10,14 +10,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8d2db76e-ffc5-4162-bd5a-2b6e810e647a" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/StudentCours/AttachCourse.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/StudentCours/ListStudentCours.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/StudentCours/StudentCourses.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/error.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/edumanage/Controllers/Deconnexion.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/edumanage/Controllers/Login.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/edumanage/Models/Admin.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/login.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/edumanage/Controllers/StudentCours.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/edumanage/Controllers/StudentCoursServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/index.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/index.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/error.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/error.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -27,8 +25,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Class" />
         <option value="HTML File" />
+        <option value="Class" />
         <option value="Jsp File" />
       </list>
     </option>
@@ -92,6 +90,7 @@
   </component>
   <component name="RunManager">
     <configuration name="Tomcat 11.0.21" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 11.0.21" ALTERNATIVE_JRE_ENABLED="false" nameIsGenerated="true">
+      <option name="OPEN_IN_BROWSER_URL" value="http://localhost:8081/login.jsp" />
       <option name="UPDATING_POLICY" value="restart-server" />
       <deployment>
         <artifact name="Edumanager:war">
@@ -103,6 +102,7 @@
       <server-settings>
         <option name="BASE_DIRECTORY_NAME" value="8c7afc18-df35-4de1-ad05-a55d713b0476" />
         <option name="HTTP_PORT" value="8081" />
+        <option name="JNDI_PORT" value="1098" />
       </server-settings>
       <predefined_log_file enabled="true" id="Tomcat" />
       <predefined_log_file enabled="true" id="Tomcat Catalina" />
