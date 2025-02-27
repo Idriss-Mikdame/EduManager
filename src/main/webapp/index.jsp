@@ -149,12 +149,29 @@
         .btn-icon {
             margin-right: 8px;
         }
+        header{
+            display: flex;
+            justify-content: space-around;
+        }
+
+        a{color: #007bff;
+          text-decoration: none;
+            cursor: pointer;
+        }
     </style>
 </head>
 <body>
 <!-- Header -->
 <header>
-    <h1>Gestion des Étudiants et des Cours</h1>
+    <div class="d-flex">
+                <span class="navbar-text me-3">
+                    <i class="fa-solid fa-user-circle me-1"></i> ${sessionScope.username}
+                </span><form action="logout" method="post">
+        <button type="submit" class="btn btn-logout">
+            <i class="fa-solid fa-sign-out-alt me-1"></i> Déconnexion
+        </button>
+
+    </div>
 </header>
 
 <div class="container">

@@ -10,12 +10,20 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8d2db76e-ffc5-4162-bd5a-2b6e810e647a" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/edumanage/Controllers/Deconnexion.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/edumanage/Controllers/Login.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/edumanage/Models/Admin.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/login.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/edumanage/Controllers/LoginServlet.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/edumanage/Controllers/LogoutServlet.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/edumanage/Filter/AuthFilter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/edumanage/Models/User.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/edumanage/dao/UserDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/webContexts.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/webContexts.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/edumanage/Controllers/Deconnexion.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/edumanage/Controllers/Login.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/edumanage/Models/Admin.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/Login.jsp" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/error.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/error.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/index.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/index.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/login.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/login.jsp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -26,8 +34,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="HTML File" />
-        <option value="Class" />
         <option value="Jsp File" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -68,6 +76,7 @@
     "Tomcat Server.Tomcat  11.0.executor": "Run",
     "Tomcat Server.Tomcat 11.0.2.executor": "Run",
     "Tomcat Server.Tomcat 11.0.21.executor": "Run",
+    "Tomcat Server.login.jsp.executor": "Run",
     "git-widget-placeholder": "main",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "C:/Users/gamra/Desktop/EduManage-JEE",
@@ -84,6 +93,7 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Enaa\Desktop\Edumanager\src\main\webapp\WEB-INF\views" />
       <recent name="C:\Users\Enaa\Desktop\Edumanager\src\main\webapp\WEB-INF\StudentCours" />
       <recent name="C:\Users\Enaa\Desktop\Edumanager\src\main\webapp\WEB-INF" />
     </key>
